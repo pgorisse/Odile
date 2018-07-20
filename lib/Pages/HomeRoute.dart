@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
-import "package:odile/Category.dart";
-import "package:odile/TalkSciencesRoute.dart";
+import "package:odile/UI/ThemeBox.dart";
 
 final _backgroundColor=Colors.lightBlueAccent;
 final _appbarColor=Colors.blue;
@@ -46,10 +45,10 @@ class HomeRoute extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    final categories = <Category>[];
+    final categories = <ThemeBox>[];
 
     for (var i = 0; i < _categoryNames.length; i++) {
-      categories.add(Category(
+      categories.add(ThemeBox(
         name: _categoryNames[i],
         color: _baseColors[i],
         iconLocation: _iconList[i],
@@ -62,38 +61,37 @@ class HomeRoute extends StatelessWidget{
           child: _buildCategoryWidgets(categories),
         );
 
-    final appBar = AppBar(
-      backgroundColor: _appbarColor,
-      title: Row(
-        children: <Widget>[
-          Padding(padding: EdgeInsets.only(left: 67.0)),
-          Icon(Icons.question_answer),
-          Text("Odile")
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: _appbarColor,
+        title: Row(
+          children: <Widget>[
+            Padding(padding: EdgeInsets.only(left: 67.0)),
+            Icon(Icons.question_answer),
+            Text("Odile")
+          ],
+        ),
+        leading: IconButton(
+            icon: Icon(Icons.menu),
+            onPressed: () {
+              print("I was tapped");
+            }
+        ),
+        centerTitle: true,
+        elevation: 14.0,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.account_circle),
+            onPressed: () {
+              print("I was tapped");
+            },
+            splashColor: _backgroundColor,
+          ),
         ],
       ),
-      leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: () {
-            print("I was tapped");
-          }
-      ),
-      centerTitle: true,
-      elevation: 14.0,
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.account_circle),
-          onPressed: () {
-            print("I was tapped");
-          },
-          splashColor: _backgroundColor,
-        ),
-      ],
-    );
-
-    return Scaffold(
-      appBar: appBar,
       body: listView,
     );
   }
 
 }
+

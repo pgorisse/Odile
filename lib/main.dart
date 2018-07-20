@@ -1,11 +1,12 @@
 import "package:flutter/material.dart";
-import "package:odile/HomeRoute.dart";
-import "package:odile/TalkSciencesRoute.dart";
-import "package:odile/TalkVoituresRoute.dart";
-import "package:odile/TalkSportRoute.dart";
-import "package:odile/TalkMusiqueRoute.dart";
-import "package:odile/TalkCuisineRoute.dart";
-import "package:odile/TalkLitteratureRoute.dart";
+import "package:odile/Pages/HomeRoute.dart";
+import "package:odile/Pages/TalkSciencesRoute.dart";
+import "package:odile/Pages/TalkVoituresRoute.dart";
+import "package:odile/Pages/TalkSportRoute.dart";
+import "package:odile/Pages/TalkMusiqueRoute.dart";
+import "package:odile/Pages/TalkCuisineRoute.dart";
+import "package:odile/Pages/TalkLitteratureRoute.dart";
+
 
 void main(){
   runApp(OdileApp());

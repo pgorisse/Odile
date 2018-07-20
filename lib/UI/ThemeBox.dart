@@ -5,12 +5,12 @@ import "package:flutter/material.dart";
 final _rowHeight=70.0;
 final _borderRadius=BorderRadius.circular(_rowHeight/2);
 
-class Category extends StatelessWidget{
+class ThemeBox extends StatelessWidget{
   final String name;
   final ColorSwatch color;
   final IconData iconLocation;
 
-  const Category({Key key,
+  const ThemeBox({Key key,
     @required this.name,
     @required this.color,
     @required this.iconLocation,
