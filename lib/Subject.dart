@@ -1,4 +1,4 @@
-class Theme {
+class Subject {
   static const _categoryNames= <String>[
     'Sciences',
     'Voitures',
@@ -15,11 +15,14 @@ class Theme {
     ['Steak-Frite','Pates','coin cannibales'],
     ['Freud', 'Poésie', 'Philosophie']
   ];
-  final String _name;
+  static String _name;
   List<String> _keyWords;
-  Theme(this._name){
-    assert (_categoryNames.contains(this._name));
-    this._keyWords=_categoryWords[_categoryNames.indexOf(this._name)];
+  Subject(String name){
+    _name=name;
+    print(_name);
+    assert (_categoryNames.contains(_name));
+    this._keyWords=_categoryWords[_categoryNames.indexOf(_name)];
   }
+  String get name => _name;
 
 }

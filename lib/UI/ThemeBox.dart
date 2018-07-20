@@ -20,7 +20,7 @@ class ThemeBox extends StatelessWidget{
         super(key: key);
 
   void _navigateToTheme(BuildContext context){
-    Navigator.pushNamed(context, "Talk"+name);
+    Navigator.pushNamed(context, "ThemePageRoute");
   }
 
   @override

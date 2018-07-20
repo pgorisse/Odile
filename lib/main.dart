@@ -6,7 +6,8 @@ import "package:odile/Pages/TalkSportRoute.dart";
 import "package:odile/Pages/TalkMusiqueRoute.dart";
 import "package:odile/Pages/TalkCuisineRoute.dart";
 import "package:odile/Pages/TalkLitteratureRoute.dart";
-
+import 'Pages/ThemePage.dart';
+import 'Subject.dart';
 
 void main(){
   runApp(OdileApp());
@@ -27,6 +28,7 @@ class OdileApp extends StatelessWidget{
         'TalkMusique': (BuildContext context) => TalkMusiqueRoute(),
         'TalkCuisine': (BuildContext context) => TalkCuisineRoute(),
         'TalkLitterature': (BuildContext context) => TalkLitteratureRoute(),
+        'ThemePageRoute': (BuildContext context) => ThemePage(new Subject("Sciences")),
       },
     );
 
