@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+final _rowHeight=50.0;
+final _borderRadius=BorderRadius.circular(_rowHeight/4.5);
+
 const _categoryNames= <String>[
   'Sciences',
   'Voitures',
@@ -28,12 +31,30 @@ class KeyWordBox extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     print(name);
-    return Material(
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.white
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Material(
+        elevation: 10.0,
+        borderRadius: _borderRadius,
+        child: Container(
+          height: _rowHeight,
+          child: InkWell(
+            borderRadius: _borderRadius,
+            onTap: () {
+              print("koukou");
+            },
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Center(
+                child: Text(
+                  name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20.0),
+                ),
+              ),
+            ),
+          ),
         ),
-        child: Text(name),
       ),
     );
   }

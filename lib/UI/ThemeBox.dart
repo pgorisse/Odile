@@ -4,7 +4,7 @@ import "package:odile/Subject.dart";
 
 
 final _rowHeight=70.0;
-final _borderRadius=BorderRadius.circular(_rowHeight/2);
+final _borderRadius=BorderRadius.circular(_rowHeight/4.5);
 
 class ThemeBox extends StatelessWidget{
   final String name;
