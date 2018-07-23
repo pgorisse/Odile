@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-
+import "package:odile/Pages/ThemePage.dart";
+import "package:odile/Subject.dart";
 
 
 final _rowHeight=70.0;
@@ -39,8 +40,14 @@ class ThemeBox extends StatelessWidget{
             // We can use either the () => function() or the () { function(); }
             // syntax.
             onTap: () {
-              print('I was tapped!');
-              _navigateToTheme(context);
+              /*print('I was tapped!');
+              _navigateToTheme(context);*/
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ThemePage(subject: Subject(title: name))
+                  )
+              );
             },
             child: Padding(
               padding: EdgeInsets.all(10.0),
