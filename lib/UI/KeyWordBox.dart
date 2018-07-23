@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:odile/Pages/MessagingPage.dart';
 
 final _rowHeight=50.0;
 final _borderRadius=BorderRadius.circular(_rowHeight/4.5);
@@ -24,7 +25,8 @@ const _categoryWords= <List<String>>[
 
 class KeyWordBox extends StatelessWidget{
   final String name;
-  const KeyWordBox({Key key, @required this.name}) :
+  final String subjectName;
+  const KeyWordBox({Key key, @required this.name, @required this.subjectName}) :
       assert(name!=null);
 
 
@@ -41,7 +43,8 @@ class KeyWordBox extends StatelessWidget{
           child: InkWell(
             borderRadius: _borderRadius,
             onTap: () {
-              print("koukou");
+              Navigator.push(context, MaterialPageRoute(
+                  builder: (context) => Chat(subject: this.subjectName, keyWord: this.name)));
             },
             child: Padding(
               padding: EdgeInsets.all(10.0),

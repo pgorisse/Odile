@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:odile/UI/ThemeBox.dart";
+import 'package:odile/Pages/MessagingPage.dart';
 
 final _backgroundColor=Colors.lightBlueAccent;
 final _appbarColor=Colors.blue;
@@ -83,7 +84,7 @@ class HomeRoute extends StatelessWidget{
           IconButton(
             icon: Icon(Icons.account_circle),
             onPressed: () {
-              print("I was tapped");
+              print("plop");
             },
             splashColor: _backgroundColor,
           ),

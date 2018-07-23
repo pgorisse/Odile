@@ -115,7 +115,7 @@ class _ThemePageState extends State<ThemePage> {
         widget.subject.title)];
     final keyWordBoxes = <KeyWordBox>[];
     for (var i = 0; i < _keyWords.length; i++) {
-      keyWordBoxes.add(KeyWordBox(name: _keyWords[i]));
+      keyWordBoxes.add(KeyWordBox(name: _keyWords[i], subjectName: widget.subject.title));
     }
     final listView = Container(
       color: _backgroundColor,

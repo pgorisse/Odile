@@ -1,36 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 
-final ThemeData iOSTheme = new ThemeData(
-  primarySwatch: Colors.red,
-  primaryColor: Colors.grey[400],
-  primaryColorBrightness: Brightness.dark,
-);
+final _backgroundColor=Colors.lightBlueAccent;
+final _appbarColor=Colors.blue;
 
-final ThemeData androidTheme = new ThemeData(
-  primarySwatch: Colors.blue,
-  accentColor: Colors.green,
-);
-
-const String defaultUserName = "John Doe";
-
-void main() => runApp(new MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext ctx) {
-    return new MaterialApp(
-      title: "Chat Application",
-      theme: defaultTargetPlatform == TargetPlatform.iOS
-          ? iOSTheme
-          : androidTheme,
-      home: new Chat(),
-    );
-  }
-}
 
 class Chat extends StatefulWidget {
+  final String subject;
+  final String keyWord;
+  Chat({Key key,
+    @required this.subject,
+    @required this.keyWord
+  })  : assert(subject!=null),
+        assert(keyWord!=null),
+        super(key: key);
+
   @override
   State createState() => new ChatWindow();
 }
@@ -42,12 +25,39 @@ class ChatWindow extends State<Chat> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext ctx) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Chat Application"),
-        elevation:
-        Theme.of(ctx).platform == TargetPlatform.iOS ? 0.0 : 6.0,
+    final appBar = AppBar(
+      backgroundColor: _appbarColor,
+      title: Row(
+        children: <Widget>[
+          Padding(padding: EdgeInsets.only(left: 67.0)),
+          Icon(Icons.question_answer),
+          Text("Odile")
+        ],
       ),
+      centerTitle: true,
+      elevation: 14.0,
+      bottom: PreferredSize(
+          child: Text(
+            "Parlez de "+widget.subject+" - "+widget.keyWord+"!",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+            ),
+          ),
+          preferredSize: Size.fromHeight(10.0)
+      ),
+      actions: <Widget>[
+        IconButton(
+          icon: Icon(Icons.account_circle),
+          onPressed: () {
+            print("I was tapped");
+          },
+          splashColor: _backgroundColor,
+        ),
+      ],
+    );
+    return new Scaffold(
+      appBar: appBar,
       body: new Column(children: <Widget>[
         new Flexible(
             child: new ListView.builder(
@@ -59,16 +69,17 @@ class ChatWindow extends State<Chat> with TickerProviderStateMixin {
         new Divider(height: 1.0),
         new Container(
           child: _buildComposer(),
-          decoration: new BoxDecoration(color: Theme.of(ctx).cardColor),
+          decoration: new BoxDecoration(color: Theme
+              .of(ctx)
+              .cardColor),
         ),
       ]),
     );
   }
 
-
   Widget _buildComposer() {
     return new IconTheme(
-      data: new IconThemeData(color: Theme.of(context).accentColor),
+      data: new IconThemeData(color: _backgroundColor),
       child: new Container(
           margin: const EdgeInsets.symmetric(horizontal: 9.0),
           child: new Row(
@@ -83,18 +94,12 @@ class ChatWindow extends State<Chat> with TickerProviderStateMixin {
                   },
                   onSubmitted: _submitMsg,
                   decoration:
-                  new InputDecoration.collapsed(hintText: "Enter some text to send a message"),
+                  new InputDecoration.collapsed(hintText: "Entrez votre message"),
                 ),
               ),
               new Container(
                   margin: new EdgeInsets.symmetric(horizontal: 3.0),
-                  child: Theme.of(context).platform == TargetPlatform.iOS
-                      ? new CupertinoButton(
-                      child: new Text("Submit"),
-                      onPressed: _isWriting ? () => _submitMsg(_textController.text)
-                          : null
-                  )
-                      : new IconButton(
+                  child:  new IconButton(
                     icon: new Icon(Icons.message),
                     onPressed: _isWriting
                         ? () => _submitMsg(_textController.text)
@@ -103,11 +108,6 @@ class ChatWindow extends State<Chat> with TickerProviderStateMixin {
               ),
             ],
           ),
-          decoration: Theme.of(context).platform == TargetPlatform.iOS
-              ? new BoxDecoration(
-              border:
-              new Border(top: new BorderSide(color: Colors.brown))) :
-          null
       ),
     );
   }
@@ -158,13 +158,13 @@ class Msg extends StatelessWidget {
           children: <Widget>[
             new Container(
               margin: const EdgeInsets.only(right: 18.0),
-              child: new CircleAvatar(child: new Text(defaultUserName[0])),
+              child: new CircleAvatar(child: Icon(Icons.cake)),
             ),
             new Expanded(
               child: new Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  new Text(defaultUserName, style: Theme.of(ctx).textTheme.subhead),
+                  new Text("Robert", style: Theme.of(ctx).textTheme.subhead),
                   new Container(
                     margin: const EdgeInsets.only(top: 6.0),
                     child: new Text(txt),

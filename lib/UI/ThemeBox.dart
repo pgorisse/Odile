@@ -20,10 +20,6 @@ class ThemeBox extends StatelessWidget{
         assert(iconLocation != null),
         super(key: key);
 
-  void _navigateToTheme(BuildContext context){
-    Navigator.pushNamed(context, "ThemePageRoute");
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
